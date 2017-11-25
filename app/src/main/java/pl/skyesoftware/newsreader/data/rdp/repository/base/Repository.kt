@@ -16,6 +16,8 @@ interface Repository<T> {
 
     fun update(item: T): Completable = throw NotImplementedError()
 
+    fun update(items: Iterable<T>): Completable = throw NotImplementedError()
+
     fun remove(item: T): Completable = throw NotImplementedError()
 
     fun remove(items: Iterable<T>): Completable = throw NotImplementedError()
