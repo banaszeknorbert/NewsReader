@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "pl.skyesoftware.newsreader"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'io.appflate.restmock.android.RESTMockTestRunner'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    kapt "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflowVersion}"
+    implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbflowVersion}"
+    implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflowVersion}"
+    implementation "com.github.Raizlabs.DBFlow:dbflow-kotlinextensions:${dbflowVersion}"
+    implementation "com.github.Raizlabs.DBFlow:dbflow-rx2-kotlinextensions:$dbflowVersion"
+    implementation "com.mateuszkoslacz.moviper:moviper-rx:$moviperVersion"
+    implementation("io.reactivex.rxjava2:rxandroid:$rxVersion") {
+        force = true
+    }
+    implementation("io.reactivex.rxjava2:rxjava:$rxVersion") {
+        force = true
+    }
+    api("com.squareup.retrofit2:retrofit:$retrofitVersion",
+            "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
+            "com.squareup.okhttp3:logging-interceptor:3.8.0")
+
+    testImplementation 'org.mockito:mockito-core:2.8.9'
+    testImplementation("com.nhaarman:mockito-kotlin:1.5.0", {
+        exclude group: 'org.jetbrains.kotlin',  module: 'kotlin-stdlib'
+        exclude group: 'org.mockito'
+    })
+    androidTestImplementation('com.github.andrzejchm.RESTMock:android:0.2.2', {
+        exclude group: 'com.squareup.okio', module: 'okio'
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    testImplementation('com.github.andrzejchm.RESTMock:android:0.2.2', {
+        exclude group: 'com.squareup.okio', module: 'okio'
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testImplementation 'org.robolectric:robolectric:3.5.1'
+    testImplementation "org.robolectric:shadows-support-v4:3.4-rc2"
+
+}

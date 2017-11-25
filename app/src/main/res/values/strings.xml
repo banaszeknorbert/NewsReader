@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">NewsReader</string>
+    <string name="error_mapping_entity">Wystąpił problem przy pobieraniu danych. Spróbuj ponownie!</string>
+</resources>
