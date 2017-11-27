@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">NewsReader</string>
     <string name="error_mapping_entity">Wystąpił problem przy pobieraniu danych. Spróbuj ponownie!</string>
+    <string name="post_id_placeholder">PostId: %s</string>
+    <string name="user_id_placeholder">UserId: %s</string>
+    <string name="post_title_placeholder">Title: %s</string>
+    <string name="post_body_placeholder">Body: %s</string>
 </resources>
