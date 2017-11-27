@@ -12,7 +12,7 @@ class PostToPostDbModelMapper : BaseMapper<Post, PostDbModel>() {
     override fun mapOrReturnNull(from: Post): PostDbModel? {
         return PostDbModel(
                 id = from.id,
-                userId = from.userId!!,
+                userId = from.userId,
                 title = from.title!!,
                 body = from.body!!
         )

@@ -1,4 +1,4 @@
-package pl.skyesoftware.newsreader.view.main
+package pl.skyesoftware.newsreader.ui.main
 
 import android.app.Activity
 import com.mateuszkoslacz.moviper.base.routing.BaseRxRouting

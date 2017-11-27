@@ -12,11 +12,11 @@ import com.raizlabs.android.dbflow.structure.BaseModel
 @Table(name = "posts", cachingEnabled = true, database = DbFlowDatabase::class)
 data class PostDbModel(
         @PrimaryKey(autoincrement = false) @Column(name = "id") var id: Int,
-        @Column(name = "userId") var userId: String,
+        @Column(name = "userId") var userId: Int,
         @Column(name = "title") var title: String,
         @Column(name = "body") var body: String) : BaseModel() {
 
-    constructor() : this(0, "", "", "")
+    constructor() : this(0, 0, "", "")
 
 }
 
