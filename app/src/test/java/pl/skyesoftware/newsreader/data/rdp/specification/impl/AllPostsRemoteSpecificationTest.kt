@@ -44,7 +44,7 @@ class AllPostsRemoteSpecificationTest {
                 .toObservable()
                 .test()
         testObserver.assertNoErrors()
-        testObserver.assertValue(mutableListOf(Post(userId = "1", id = 0, title = "title", body = "body")))
+        testObserver.assertValue(mutableListOf(Post(userId = 1, id = 0, title = "title", body = "body")))
         testObserver.assertComplete()
     }
 
@@ -57,19 +57,9 @@ class AllPostsRemoteSpecificationTest {
     }
 
     private fun mockPostsEndpoint() {
-        val body = Gson().toJson(listOf(Post("1", 0, "title", "body")))
+        val body = Gson().toJson(listOf(Post(1, 0, "title", "body")))
         RESTMockServer.whenGET(RequestMatchers.pathEndsWith(POSTS_ENDPOINT_PATH))
                 .thenReturn(MockResponse().setBody(body))
-//                .thenReturnFile(200, "posts_response/posts.json")
-//                .thenReturnString("[{\"userId\"=1, \"id\"=0, \"title\"=\"title\", \"body\"=\"body\"}]")
-//                .thenReturnString(200, "[\n" +
-//                        "  {\n" +
-//                        "    \"userId\": 1,\n" +
-//                        "    \"id\": 1,\n" +
-//                        "    \"title\": \"title\",\n" +
-//                        "    \"body\": \"body\"\n" +
-//                        "  }\n" +
-//                        "]")
     }
 
 }

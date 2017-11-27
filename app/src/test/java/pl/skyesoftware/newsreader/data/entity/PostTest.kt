@@ -14,17 +14,12 @@ class PostTest {
 
     @Test
     fun isMissingAnyField_returnsFalseWhenBodyIsNull() {
-        Assert.assertTrue(Post(id = 0, userId= "1", title = "title", body = null).isMissingAnyField())
+        Assert.assertTrue(Post(id = 0, userId= 1, title = "title", body = null).isMissingAnyField())
     }
 
     @Test
     fun isMissingAnyField_returnsFalseWhenTitleIsNull() {
-        Assert.assertTrue(Post(id = 0, userId= "1", title = null, body = "body").isMissingAnyField())
-    }
-
-    @Test
-    fun isMissingAnyField_returnsFalseWhenUserIdIsNull() {
-        Assert.assertTrue(Post(id = 0, userId= null, title = "title", body = "body").isMissingAnyField())
+        Assert.assertTrue(Post(id = 0, userId= 1, title = null, body = "body").isMissingAnyField())
     }
 
 }
